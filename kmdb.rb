@@ -268,6 +268,6 @@ puts ""
 roles = Role.all
 for role in roles
   actors = Actor.where({"id" => role["actor_id"]})
-  cast_movies = Actor.where({"id" => role["movie_id"]})
+  cast_movies = Movie.where({"id" => role["movie_id"]})
   puts "#{cast_movies["title"]} #{actors["name"]} #{role["character_name"]}"
 end
