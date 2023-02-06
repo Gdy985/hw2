@@ -266,8 +266,12 @@ puts ""
 # TODO!
 
 roles = Role.all
-for role in roles
-  actors = Actor.where({"id" => role["actor_id"]})
-  cast_movies = Movie.where({"id" => role["movie_id"]})
-  puts "#{cast_movies["title"]} #{actors["name"]} #{role["character_name"]}"
+for cast in roles
+  actors = Actor.where({"id" => cast["actor_id"]})
+  cast_movies = Movie.where({"id" => cast["movie_id"]})
+  for movie in cast_movies
+    for actor in actors
+      puts "#{movie["title"]} #{actor["name"]} #{cast["character_name"]}"
+    end
+  end
 end
